@@ -1,7 +1,13 @@
 public class LC130 {
     public static void main(String[] args) {
         // char[][] board = {{'X','X','X','X'},{'X','O','O','X'},{'X','X','O','X'},{'X','O','X','X'}};
-        char[][] board = {{'X'}};    
+        // char[][] board = {{'X'}};    
+        char[][] board = {
+            {'X','O','X','O','X','O'},
+            {'O','X','O','X','O','X'},
+            {'X','O','X','O','X','O'},
+            {'O','X','O','X','O','X'}
+        };    
 
         new LC130().solve(board);;
 
@@ -38,15 +44,17 @@ public class LC130 {
                 bordered[i][0] = true;
                 dfs(i, 0, board, bordered);
             }
-            if(board[i][n-1] == 'O' && !bordered[i][n-1]){
-                bordered[i][n-1] = true;
-                dfs(i, n-1, board, bordered);
-            }
-            for(int j = 0; j<m; j++){
-                if(board[i][j] == 'O' && !bordered[i][j]) board[i][j] = 'X';
+            if(board[i][m-1] == 'O' && !bordered[i][m-1]){
+                bordered[i][m-1] = true;
+                dfs(i, m-1, board, bordered);
             }
         }
 
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if(board[i][j] == 'O' && !bordered[i][j]) board[i][j] = 'X';
+            }
+        }
         // for(boolean[] r : bordered){
         //     for(boolean b : r){
         //         System.out.print(b +" ");

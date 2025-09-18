@@ -13,41 +13,34 @@ public class Undirected_Graph_Cycle {
 
     public boolean isCycle(int V, int[][] edges) {
         // Code here
+        boolean[] v = new boolean[V];
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
 
-        for(int i = 0; i<V; i++){
+        for (int i = 0; i < V; i++) {
             adj.add(new ArrayList<>());
         }
+
 
         for(int[] e : edges){
             adj.get(e[0]).add(e[1]);
             adj.get(e[1]).add(e[0]);
         }
-
-        int[] parent = new int[V];
-        Arrays.fill(parent, -1);
+        ArrayDeque<Integer> q = new ArrayDeque<>();
 
         for(int i = 0; i<V; i++){
-            if(parent[i] == -1){
-                parent[i] = 0;
-                if(dfs(adj, i, parent)) return true;
+            if(!v[i]){
+                v[i] = true;
+                q.add(i);
+
+                while(q.size() != 0){
+                    int cur = q.poll();
+
+                    for(int n : adj.get(cur)){
+                        if(!v[n])
+                    }
+                }
+
             }
         }
-
-        return false;
-    }
-
-    static boolean dfs(ArrayList<ArrayList<Integer>> adj, int par, int[] parent){
-
-        for(int n : adj.get(par)){
-            if(parent[n] == -1){
-                parent[n] = par;
-                if(dfs(adj, n, parent)) return true;
-            }else if(parent[n] != -1 && parent[par] != n){
-                return true;
-            }
-        }
-
-        return false;
     }
 }
