@@ -54,5 +54,23 @@
 			"}"
 		],
 		"description": "Loop through 4 directions with boundary and color check"
-	}
+	},
+	"Convert edges to adjacency list": {
+    "prefix": "adj",
+    "body": [
+      "int n = ${1:vertices};",
+      "int[][] edges = ${2:edges};",
+      "ArrayList<ArrayList<Integer>> adj = new ArrayList<>();",
+      "for (int i = 0; i < n; i++) {",
+      "    adj.add(new ArrayList<>());",
+      "}",
+      "for (int[] e : edges) {",
+      "    int u = e[0];",
+      "    int v = e[1];",
+      "    adj.get(u).add(v);",
+      "    adj.get(v).add(u); // remove if directed",
+      "}"
+    ],
+    "description": "Convert int[][] edges into adjacency list ArrayList<ArrayList<Integer>>"
+  }
 }
