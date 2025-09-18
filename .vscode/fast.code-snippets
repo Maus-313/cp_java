@@ -1,28 +1,58 @@
 {
-	// Place your Java workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
-	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
-	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
-	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
-	// Placeholders with the same ids are connected.
-	// Example:
-	// "Print to console": {
-	// 	"scope": "javascript,typescript",
-	// 	"prefix": "log",
-	// 	"body": [
-	// 		"console.log('$1');",
-	// 		"$2"
-	// 	],
-	// 	"description": "Log output to console"
-	// }
-
-	"Print to console": {
-		"scope": "Java",
-		"prefix": "log",
+	"Println": {
+		"prefix": "sout",
 		"body": [
-			"console.log('$1');",
-			"$2"
+			"System.out.println($1);"
 		],
-		"description": "Log output to console"
+		"description": "Prints a line to console"
+	},
+	"Main Method": {
+		"prefix": "main",
+		"body": [
+			"public static void main(String[] args) {",
+			"    $1",
+			"}"
+		],
+		"description": "Java main method"
+	},
+	"For Loop": {
+		"prefix": "fori",
+		"body": [
+			"for (int i = 0; i < $1; i++) {",
+			"    $2",
+			"}"
+		],
+		"description": "For loop"
+	},
+	"Nested For Loop": {
+		"prefix": "for2",
+		"body": [
+			"for (int i = 0; i < $1; i++) {",
+			"    for (int j = 0; j < $2; j++) {",
+			"        $3",
+			"    }",
+			"}"
+		],
+		"description": "Nested for loop in Java"
+	},
+	"Direction Array": {
+		"prefix": "dir4",
+		"body": [
+			"static int[][] dir = { { 1, 0 }, { 0, 1 }, { -1, 0 }, { 0, -1 } };"
+		],
+		"description": "4-direction array for grid traversal"
+	},
+	"For Loop Over Directions": {
+		"prefix": "forDir",
+		"body": [
+			"for (int[] d : dir) {",
+			"    int ni = ci + d[0];",
+			"    int nj = cj + d[1];",
+			"",
+			"    if (ni < 0 || nj < 0 || ni >= n || nj >= m) continue;",
+			"",
+			"}"
+		],
+		"description": "Loop through 4 directions with boundary and color check"
 	}
 }
