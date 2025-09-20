@@ -16,44 +16,17 @@ public class Shortest_path_in_Directed_Acyclic_Graph {
     }
 
     public int[] shortestPath(int V, int E, int[][] edges) {
-        // Code here
-        // node , dist
-        ArrayList<ArrayList<int[]>> adj = new ArrayList();
-        
-        for(int i = 0; i<V; i++){
-            adj.add(new ArrayList());
-        }
-        
-        for(int[] e : edges){
-            adj.get(e[0]).add(new int[]{e[1], e[2]});
-        }
-        
         int[] dist = new int[V];
-        
-        Arrays.fill(dist, -1);
-        
-        dist[0] = 0;
-        
-        // dist, node
-        PriorityQueue<int[]> q = new PriorityQueue<>((a, b) -> a[0] - b[0]);
-        q.add(new int[] {dist[0], 0});
 
-        while(q.size() != 0 ){
-            int[] temp = q.poll();
-            int curr = temp[1];
-            int d = temp[0];
+        int INF = Integer.MAX_VALUE;
+        boolean v[] = new boolean[V];
 
-            for(int[] n : adj.get(curr)){
-                int nd = d + n[1];
-                int nn = n[0];
-                
-                if(dist[nn] == -1 || dist[nn] > nd){
-                    dist[nn] = nd;
-                    q.add(new int[]{nd, nn});
-                }
-            }
-        }
+        Arrays.fill(dist, INF);
+
+        // distance, node
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[0] - b[0]); 
+
         
-        return dist;
     }
+
 }

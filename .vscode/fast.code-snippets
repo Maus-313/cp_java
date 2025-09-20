@@ -56,21 +56,37 @@
 		"description": "Loop through 4 directions with boundary and color check"
 	},
 	"Convert edges to adjacency list": {
-    "prefix": "adj",
-    "body": [
-      "int n = ${1:vertices};",
-      "int[][] edges = ${2:edges};",
-      "ArrayList<ArrayList<Integer>> adj = new ArrayList<>();",
-      "for (int i = 0; i < n; i++) {",
-      "    adj.add(new ArrayList<>());",
-      "}",
-      "for (int[] e : edges) {",
-      "    int u = e[0];",
-      "    int v = e[1];",
-      "    adj.get(u).add(v);",
-      "    adj.get(v).add(u); // remove if directed",
-      "}"
-    ],
-    "description": "Convert int[][] edges into adjacency list ArrayList<ArrayList<Integer>>"
-  }
+		"prefix": "adj",
+		"body": [
+			"int n = ${1:vertices};",
+			"int[][] edges = ${2:edges};",
+			"ArrayList<ArrayList<Integer>> adj = new ArrayList<>();",
+			"for (int i = 0; i < n; i++) {",
+			"    adj.add(new ArrayList<>());",
+			"}",
+			"for (int[] e : edges) {",
+			"    int u = e[0];",
+			"    int v = e[1];",
+			"    adj.get(u).add(v);",
+			"    adj.get(v).add(u); // remove if directed",
+			"}"
+		],
+		"description": "Convert int[][] edges into adjacency list ArrayList<ArrayList<Integer>>"
+	},
+	"Edges to Adj (Weighted)": {
+		"prefix": "wdadj",
+		"body": [
+			"// edges: int[][] {u,v,w}, directed weighted graph",
+			"ArrayList<ArrayList<int[]>> adj = new ArrayList<>();",
+			"for (int i = 0; i < n; i++) adj.add(new ArrayList<>());",
+			"for (int[] e : edges) adj.get(e[0]).add(new int[]{e[1], e[2]});"
+		]
+	},
+	"Direction Array 8": {
+		"prefix": "dir8",
+		"body": [
+			"static int[][] dir = { { 1, 0 }, { 0, 1 }, { -1, 0 }, { 0, -1 }, {1,1}, {-1,1},{1,-1},{-1,-1} };"
+		],
+		"description": "4-direction array for grid traversal"
+	}
 }
