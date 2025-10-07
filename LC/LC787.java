@@ -13,5 +13,41 @@ public class LC787{
 
     }
 
-    
+    public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
+        k += 1;
+        // cost, k, node
+
+        int[][] edges = flights;
+
+        // node, cost
+        ArrayList<ArrayList<int[]>> adj = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            adj.add(new ArrayList<>());
+        }
+        for (int[] e : edges) {
+            int u = e[0];
+            int v = e[1];
+            adj.get(u).add(new int[] {v, e[2]}); // remove if directed
+        }
+
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) -> a[0] - b[0]);
+
+        int[] dist = new int[n];
+
+        Arrays.fill(dist, -1);
+        dist[src] = 0;
+
+        pq.add(new int[]{0, k, src});
+
+        while(pq.size() != 0){
+            int[] temp = pq.poll();
+            int curr = temp[2];
+            int cost = temp[0];
+            if(curr == dst) return cost;
+
+            for(int[] temp_n: adj.get(curr)){
+                
+            }
+        }
+    }
 }
