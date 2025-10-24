@@ -10,6 +10,7 @@ public class Sieve_of_Eratosthenes {
 
     public int[] sieve(int n) {
         // code here
+        
     }
 
     public int[] sol1(int n) {

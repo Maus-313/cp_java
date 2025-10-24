@@ -1,29 +1,54 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Prime_Factors {
     public static void main(String[] args) {
-        ArrayList<Integer> ans = primeFac(35);
+        ArrayList<Integer> ans = primeFac(71);
         for(int i  : ans){
             System.out.print(i+" ");
         }
     }
 
-    public static ArrayList<Integer> primeFac(int n) {
-        // code here
-        // Take out the factors, then check for the prime
+    public static ArrayList<Integer> primeFac(int n) {}
+
+    public static ArrayList<Integer> sol1(int n) {
+        // This is not optimized for Large Prime numbers
         ArrayList<Integer> ans = new ArrayList<>();
-        if(n == 1){
-            ans.add(-1);
-            return ans;
-        }else if(n == 2){
-            ans.add(2);
-            return ans;
-        }else if(n == 3){
-            ans.add(3);
-            return ans;
+
+        int i = 2;
+        while(n != 1){
+            if(n%i == 0){
+                ans.add(i);
+                while(n%i == 0){
+                    n = n/i;
+                }
+            }
+            if(n == 1) break;
+            i++;
         }
-        
-        for(int i = 1; i<)
+
+        return ans;
+    }
+
+    public static ArrayList<Integer> sol2(int n) {
+        // This is much optimized
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        int i = 2;
+        int orig = n;
+        while(n != 1){
+            if(n%i == 0){
+                ans.add(i);
+                while(n%i == 0){
+                    n = n/i;
+                }
+            }
+            if(n == 1) break;
+            if(i == Math.sqrt(n)) break;
+            i++;
+        }
+
+        if(ans.size() == 0) ans.add(orig);
 
         return ans;
     }
