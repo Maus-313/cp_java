@@ -1,69 +1,86 @@
 import java.util.ArrayList;
 
 public class LC204 {
+
     public static void main(String[] args) {
         LC204 solution = new LC204();
-        int res = solution.countPrimes(499979);
+        int res = solution.countPrimes(10);
         System.out.println(res);
-        System.out.println(res == 41537);
+        // System.out.println(res == 41537);
     }
 
     public int countPrimes(int n) {
+        
+    }
 
-            int count = 0;
-            // boolean[] p = new boolean[n];
+    public int sol1(int n) {
+        // Not optimized 146ms
 
-            int[] p = new int[n];
-            int idx = 0;
-            int pf = 0;
+        ArrayList<Integer> ans = new ArrayList<>();
+        boolean[] prime = new boolean[n];
 
-            for(int i = 2; i*i<=n; i++){
-                if(p[i] == 0){
-                    p[i] = pf + 1;
-                    pf++;
-                    for(int j = i*i; j<n; j+= i){
-                        p[j] = -1;
+        for(int i = 2; i<n; i++){
+            if(!prime[i]){
+                // System.out.println(i);
+                ans.add(i);
+                for(int j = i+i; j<n; j+=i){
+                    prime[j] = true;
+                }
+            }
+        }
+
+        // for(int i : ans){
+        //     System.out.println(i);
+        // }
+
+        return ans.size();
+    }
+
+
+    public int sol2(int n) {
+        // vey optimisede 30ms
+
+        static int INF = 5000000;
+
+    // false = prime and vice versa
+        static boolean[] prime = new boolean[INF+1];
+
+        static int[] prefixSum = new int[INF+1];
+        static boolean init = false;
+
+        public int countPrimes(int n) {
+
+            if(!init){
+                initialize();
+                init = true;
+            }
+
+            // for(int i = 0; i<=INF; i++){
+            //     System.out.println(i+ " = "+!prime[i]);
+            // }
+
+            // for(int i : prefixSum){
+            //     System.out.print(i+" ");
+            // }
+            
+            return prefixSum[n];
+
+        }
+
+        static void initialize(){
+
+            for(int i = 2; i*i<=INF; i++ ){
+                if(!prime[i]){
+                    for(int j = i*i; j<=INF; j+=i){
+                        prime[j] = true;
                     }
                 }
-                idx = i;
             }
 
-            while(idx < n){
-                if(p[idx] != -1){
-                    pf++;
-                }
-                p[idx] = pf;
-                idx++;
+            for(int i = 3; i<=INF; i++){
+                prefixSum[i] = prefixSum[i-1]+((!prime[i-1])? 1:0);
             }
-            return p[n-1];
 
-            // for(int i = 2; i<n; i++){
-            //     if(p[i] == 0) count++;
-            // }
-            // return count;
         }
-
-    public int answer(int n) {
-        int count = 0;
-        boolean[] p = new boolean[n];
-
-        for (int i = 2; i <= n / i; i++) {
-            if (p[i] == false) {
-                for (int j = i * i; j < n; j += i)
-                    p[j] = true;
-            }
-        }
-
-        for (int i = 2; i < n; i++) {
-            if (!p[i]) {
-                try (java.io.FileWriter fw = new java.io.FileWriter("included_primes_correct.txt", true)) {
-                    fw.write("Included: " + i + System.lineSeparator());
-                } catch (java.io.IOException e) {
-                    e.printStackTrace();
-                }
-                count++;
-            }
-        }
-        return count;
     }
 }
