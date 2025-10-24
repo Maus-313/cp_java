@@ -3,16 +3,19 @@ import java.util.Collections;
 
 public class Prime_Factors {
     public static void main(String[] args) {
-        ArrayList<Integer> ans = primeFac(71);
+        ArrayList<Integer> ans = sol2(74);
         for(int i  : ans){
             System.out.print(i+" ");
         }
+        // System.out.println((int)Math.sqrt(35));
     }
 
-    public static ArrayList<Integer> primeFac(int n) {}
+    public static ArrayList<Integer> primeFac(int n) {
+        
+    }
 
     public static ArrayList<Integer> sol1(int n) {
-        // This is not optimized for Large Prime numbers
+        // (The School method) This is not optimized for Large Prime numbers
         ArrayList<Integer> ans = new ArrayList<>();
 
         int i = 2;
@@ -32,6 +35,20 @@ public class Prime_Factors {
 
     public static ArrayList<Integer> sol2(int n) {
         // This is much optimized
+
+        // Example 35
+        /*
+        For 35 ->
+
+            5|35
+            7|7
+             |1
+
+        For 75 ->
+
+            it will run only for (int)sqrt(37) ==  6 
+    
+        */
         ArrayList<Integer> ans = new ArrayList<>();
 
         int i = 2;
