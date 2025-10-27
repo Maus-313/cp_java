@@ -1,0 +1,25 @@
+public class LC2220 {
+    public static void main(String[] args) {
+        int start = 10, goal = 7;
+        System.out.println(new LC2220().minBitFlips(start, goal));
+        // System.out.println(10>>3 & 1);
+    }
+
+    public int minBitFlips(int start, int goal) {
+        
+    }
+
+    public int sol1(int start, int goal) {
+        // 1    -> 0001
+        // 14   -> 1110
+        int count = 0;
+        while(start != goal){
+            if(((start & 1)^(goal & 1)) != 0) count++;
+            start = start>>1;
+            goal = goal>>1;
+        }
+
+        return count;
+    }
+    
+}
