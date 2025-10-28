@@ -5,10 +5,13 @@ public class LC50 {
         int n = Integer.MIN_VALUE;
         // System.out.println(Integer.MIN_VALUE);
         // System.out.println(-1*n);
-        System.out.println(new LC50().myPow(x,n));
+        // System.out.println(new LC50().myPow(x,n));
+
     }
 
-    public double myPow(double x, int n) {}
+    public double myPow(double x, int n) {
+        
+    }
 
     static double sol1(double x, int n){
 
