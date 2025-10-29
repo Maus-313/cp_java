@@ -12,40 +12,51 @@ public class LC78{
             }
             System.out.println();
         }
-
-        // 0 0 0
-        // 0 0 1
-        // 0 1 0
-        // for(int i = 0; i<10; i++){
-        //     int n = i;
-        //     int k = 0;
-        //     while(n != 0){
-        //         if((n >> k & 1) == 1){
-        //             System.out.print(k + " ");
-        //         }
-        //         k++;
-        //         n = n>>1;
-        //     }
-        //     System.out.println();
-        // }
     }
 
     public List<List<Integer>> subsets(int[] nums) {
+
+    }
+
+    public List<List<Integer>> sol1(int[] nums) {
+        // PowerSet best solution possible, but recursion is also good, so take a look below
         List<List<Integer>> ans = new ArrayList<>();
 
+        int s = nums.length;
+        int l = 1 << nums.length;
+
+        for(int i = 0; i<l; i++){
+            List<Integer> temp = new ArrayList<>();
+            for(int j = 0; j<s; j++){
+                if(( i>>j & 1) == 1) temp.add(nums[j]);
+            }
+            ans.add(temp);
+        }
+
+        return ans;
+    }
+
+
+    public List<List<Integer>> sol2(int[] nums) {
+
+        // Rec solution
+        List<List<Integer>> ans = new ArrayList<>();
+        
         help(ans, nums, 0, new ArrayList<>());
 
         return ans;
     }
 
+
     static void help(List<List<Integer>> ans, int[] arr, int idx, List<Integer> temp){
 
-        if(idx >= arr.length) return;
-
         ans.add(new ArrayList<>(temp));
-        temp.add(arr[idx]);
-        help(ans, arr, idx+1, temp);
-        temp.remove(temp.size()-1);
+
+        for(int i = idx; i<arr.length; i++){
+            temp.add(arr[i]);
+            help(ans, arr, i+1, temp);
+            temp.remove(temp.size()-1);
+        }
         
     }
 }
