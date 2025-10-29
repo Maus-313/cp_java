@@ -6,9 +6,7 @@ public class LC136 {
         System.out.println(new LC136().singleNumber(nums));
     }
 
-    public int singleNumber(int[] nums) {
-        
-    }
+    public int singleNumber(int[] nums) {}
 
     public int sol1(int[] nums) {
 
@@ -27,5 +25,16 @@ public class LC136 {
         }
 
         return ans;
+    }
+
+    public int sol2(int[] nums) {
+        // 1ms
+        int temp = 0;
+
+        for(int i : nums){
+            temp = temp^i;
+        }
+
+        return temp;
     }
 }
