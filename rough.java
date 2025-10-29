@@ -1,12 +1,23 @@
 
-import java.util.ArrayList;
-
 public class rough {
     public static void main(String[] args) {
-        ArrayList<Integer> al = new ArrayList<>();
-        al.add(12);
-        al.add(2);
+        System.out.println(123123);
+        // int a = 12;
+        // int b = 23;
 
-        // int[] arr = al.toArray();
+        // a = a^b;
+        // b = a^b;
+        // a = b^a;
+
+        // int b = 23;
+
+        // a = a^b;
+        // b = a^b;
+        // a = b^a;
+
+        // System.out.println(a);
+        // System.out.println(b);
+        // System.out.println(a);
+        // System.out.println(b);
     }
 }
