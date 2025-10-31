@@ -10,7 +10,13 @@ public class LC496 {
         System.out.println(java.util.Arrays.toString(result));
     }
 
-    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+    public int[] nextGreaterElement(int[] nums1, int[] nums2){
+
+        
+
+    }
+
+    public int[] sol1(int[] nums1, int[] nums2) {
             int l = nums2.length;
             int[] ans = new int[nums1.length];
             // int[] nge = new int[l];

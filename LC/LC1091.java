@@ -57,5 +57,4 @@ public class LC1091 {
 
         return -1;
     }
-
 }

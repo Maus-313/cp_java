@@ -28,7 +28,30 @@ public class Bellman_Ford {
     
     public int[] bellmanFord(int V, int[][] edges, int src) {
         // code here
-        
+        int INF = 100000000;
+
+        int[] dist = new int[V];
+
+        Arrays.fill(dist, INF);
+        dist[src] = 0;
+
+        for(int i = 0; i<V-1; i++){
+            for(int[] e : edges){
+                if(dist[e[0]] == INF) continue;
+                if(dist[e[0]] + e[2] < dist[e[1]]){
+                    dist[e[1]] = dist[e[0]] + e[2];
+                }
+            }
+        }
+
+        for(int[] e : edges){
+            if(dist[e[0]] == INF) continue;
+            if(dist[e[0]] + e[2] < dist[e[1]]){
+                return new int[]{-1};
+            }
+        }
+
+        return dist;
 
     }
 }

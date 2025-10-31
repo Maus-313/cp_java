@@ -9,6 +9,12 @@ public class LC735 {
     }
 
     public int[] asteroidCollision(int[] asteroids) {
+
+        
+
+    }
+
+    public int[] sol1(int[] asteroids) {
         
         ArrayList<Integer> arr = new ArrayList<>();
         ArrayDeque<Integer> st = new ArrayDeque<>();
