@@ -1,0 +1,73 @@
+public class LC29 {
+    public static void main(String[] args) {
+        // System.out.println(new LC29().divide(Integer.MIN_VALUE, 2)); 
+        int a = Integer.MIN_VALUE;
+        int b = 1;
+        System.out.println(new LC29().divide(a, b));
+        // System.out.println(a/b);
+        // long aa = 1;
+        // System.out.println(aa*Math.pow(2, 31));
+        // System.out.println(aa*((long)1<<32));
+        // long aa = Math.abs((long)Integer.MIN_VALUE);
+        // System.out.println(aa);
+    }
+
+    public int divide(int d, int dd) {
+
+        if(d == Integer.MIN_VALUE && dd == -1) return Integer.MAX_VALUE;
+        if(d == dd) return 1;
+        if(d == 0) return 0;
+
+        long dividend = (long) d;
+        long divisor = (long) dd;
+        // System.out.println(dividend);
+        
+        // if(d < dd) return 0;
+
+        boolean sign = true;
+        if(d < 0 && dd > 0) sign = false;
+        if(d > 0 && dd < 0) sign = false;
+
+        dividend = Math.abs(dividend);
+        divisor = Math.abs(divisor);
+
+        // System.out.println(dividend);
+        // return 0;
+        int sum = 0;
+        
+        while( dividend >= divisor ){
+
+            int temp = 0;
+            while (dividend >= (divisor*((long)1<<temp))) {
+                // System.out.println(dividend);
+                // break;
+                temp++;
+                if(temp == 31) break;
+                // System.out.println(temp);
+            }
+            temp--;
+            dividend = dividend - (divisor*((long)1<<temp));
+            // System.out.println(dividend);
+            sum += 1<<temp;
+        }
+
+        if(sum > Integer.MAX_VALUE){
+            if(!sign){
+                return Integer.MIN_VALUE;
+            }else return Integer.MAX_VALUE;
+        }
+        // 
+        return (sum)*((!sign)? -1:1);
+    }
+    
+    public int sol1(int dividend, int divisor) {
+        // 1ms
+        if(dividend == Integer.MIN_VALUE && divisor == -1) return Integer.MAX_VALUE;
+        return dividend/divisor;
+    }
+
+    public int sol2(int dividend, int divisor) {
+        // 0ms
+        
+    }
+}
