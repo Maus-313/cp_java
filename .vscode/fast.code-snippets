@@ -88,5 +88,14 @@
 			"static int[][] dir = { { 1, 0 }, { 0, 1 }, { -1, 0 }, { 0, -1 }, {1,1}, {-1,1},{1,-1},{-1,-1} };"
 		],
 		"description": "4-direction array for grid traversal"
+	},
+	"Printing Ans array": {
+		"prefix": "forians",
+		"body": [
+			"for(int i : ans){",
+			"   System.out.print(i + \" \");",
+			"}"
+		],
+		"description": "To quickly print answer array"
 	}
 }

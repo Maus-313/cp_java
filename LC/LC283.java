@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class LC283 {
     public static void main(String[] args) {
         int[] nums = {0,1,0,3,12};
@@ -8,6 +10,28 @@ public class LC283 {
     }
 
     public void moveZeroes(int[] nums) {
+        int zeros = 0;
+        int non = 0;
+        int l = nums.length;
+
+        while(non < l && zeros < l){
+            if(nums[zeros] == 0){
+                while(non < l && nums[non] == 0){
+                    non++;
+                }
+                if(non >= l) return;
+                nums[zeros] = nums[non];
+                nums[non] = 0;
+                zeros++;
+            }else{
+                while(zeros < l && nums[zeros] != 0) zeros++;
+                non = zeros+1;
+            }
+        }
+    }
+
+    public void sol2ms(int[] nums) {
+        // 2ms
         int[] clone = nums.clone();
         int l = nums.length;
         int idx = 0;
@@ -31,8 +55,9 @@ public class LC283 {
         }
     }
 
-    public void sol1(int[] nums) {
+    public void sol3ms(int[] nums){
         int[] clone = nums.clone();
+        Arrays.fill(nums, 0);
         int l = nums.length;
         int idx = 0;
         int count = 0;
@@ -44,14 +69,6 @@ public class LC283 {
             }else{
                 count++;
             }
-        }
-
-        idx = l - 1;
-
-        while(count != 0){
-            nums[idx] = 0;
-            idx--;
-            count--;
         }
     }
 }
