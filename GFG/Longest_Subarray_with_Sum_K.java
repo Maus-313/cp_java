@@ -10,17 +10,7 @@ public class Longest_Subarray_with_Sum_K {
 
     public int longestSubarray(int[] arr, int k) {
         // code here
-        HashMap<Long, Integer> mem = new HashMap<>();
-        int max = 0;
-        long sum = 0;
-        for(int i = 0; i<arr.length; i++){
-            sum += arr[i];
-            if(sum == k) max = Math.max(max, i+1);
-            if(mem.containsKey(sum-k)) max = Math.max(max, i-mem.get(sum-k));
-            if(!mem.containsKey(sum)) mem.put(sum, i);
-        }
-
-        return max;
+        
     }
 
     public int sol1(int[] arr, int k) {
@@ -40,7 +30,7 @@ public class Longest_Subarray_with_Sum_K {
     }
 
     public int sol2(int[] arr, int k) {
-        // better solution
+        // best solution
         HashMap<Long, Integer> mem = new HashMap<>();
         int max = 0;
         long sum = 0;

@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class LC560 {
     public static void main(String[] args) {
@@ -8,30 +9,8 @@ public class LC560 {
     }
 
     public int subarraySum(int[] arr, int k) {
-
-        int count = 0;
-
-        return count;
+        
     }
-
-    public int sol2(int[] arr, int k) {
-        // optimised 
-        int count = 0;
-        HashMap<Integer, Integer> map = new HashMap<>();
-
-        int sum = 0;
-        for(int i = 0; i<arr.length; i++){
-            sum += arr[i];
-            if(sum == k){
-                count++;
-            }else if(map.containsKey(sum - k)){
-                count++;
-            }
-        }
-
-        return count;
-    }
-
 
     public int sol1(int[] arr, int k) {
         // 1571ms brute force
@@ -46,5 +25,31 @@ public class LC560 {
             }
         }
         return max;
+    }
+
+    public int sol2(int[] arr, int k) {
+        // 22ms best solution
+        int count = 0;
+
+        // 
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        int sum = 0;
+        map.put(0, 1);
+
+        for(int i = 0; i<arr.length; i++){
+            sum += arr[i];
+            int diff = sum - k;
+            if(map.containsKey(diff)){
+                count += map.get(diff);
+            }
+            if(map.containsKey(sum)){
+                map.put(sum, map.get(sum)+1);
+            }else{
+                map.put(sum, 1);
+            }
+        }
+
+        return count;
     }
 }
