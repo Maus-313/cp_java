@@ -8,6 +8,14 @@ public class LC560 {
     }
 
     public int subarraySum(int[] arr, int k) {
+
+        int count = 0;
+
+        return count;
+    }
+
+    public int sol2(int[] arr, int k) {
+        // optimised 
         int count = 0;
         HashMap<Integer, Integer> map = new HashMap<>();
 
@@ -24,7 +32,10 @@ public class LC560 {
         return count;
     }
 
+
     public int sol1(int[] arr, int k) {
+        // 1571ms brute force
+
         int max = 0;
         int l = arr.length;
         for (int i = 0; i < l; i++) {

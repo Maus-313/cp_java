@@ -1,3 +1,4 @@
+import java.util.HashMap;
 
 public class Longest_Subarray_with_Sum_K {
     public static void main(String[] args) {
@@ -9,6 +10,21 @@ public class Longest_Subarray_with_Sum_K {
 
     public int longestSubarray(int[] arr, int k) {
         // code here
+        HashMap<Long, Integer> mem = new HashMap<>();
+        int max = 0;
+        long sum = 0;
+        for(int i = 0; i<arr.length; i++){
+            sum += arr[i];
+            if(sum == k) max = Math.max(max, i+1);
+            if(mem.containsKey(sum-k)) max = Math.max(max, i-mem.get(sum-k));
+            if(!mem.containsKey(sum)) mem.put(sum, i);
+        }
+
+        return max;
+    }
+
+    public int sol1(int[] arr, int k) {
+        // brute force
         int max = 0;
         int l = arr.length;
         
@@ -23,17 +39,16 @@ public class Longest_Subarray_with_Sum_K {
         return max;
     }
 
-    public int sol1(int[] arr, int k) {
-        // code here
+    public int sol2(int[] arr, int k) {
+        // better solution
+        HashMap<Long, Integer> mem = new HashMap<>();
         int max = 0;
-        int l = arr.length;
-        
-        for (int i = 0; i < l; i++) {
-            int sum = 0;
-            for (int j = i; j < l; j++) {
-                sum += arr[j];
-                if(sum == k) max = Math.max(max, j-i+1);
-            }
+        long sum = 0;
+        for(int i = 0; i<arr.length; i++){
+            sum += arr[i];
+            if(sum == k) max = Math.max(max, i+1);
+            if(mem.containsKey(sum-k)) max = Math.max(max, i-mem.get(sum-k));
+            if(!mem.containsKey(sum)) mem.put(sum, i);
         }
 
         return max;
