@@ -7,6 +7,28 @@ public class LC169 {
     }
 
     public int majorityElement(int[] nums) {
+        
+    }
+
+    public int sol3(int[] nums){
+        // 19ms
+        int n = nums.length;
+        if(n == 1) return nums[0];
+        HashMap<Integer, Integer> mem = new HashMap<>();
+
+        for(int i : nums){
+            if(mem.containsKey(i)){
+                mem.put(i, mem.get(i)+1);
+                if(mem.get(i) > n/2) return i;
+            }else{
+                mem.put(i, 1);
+            }
+        }
+
+        return -1;
+    }
+
+    public int sol2(int[] nums) {
         // 1ms M0oe Moe algo
         int n = nums.length;
         
@@ -27,6 +49,7 @@ public class LC169 {
 
         return ans;
     }
+
 
     public int sol1(int[] nums) {
         // 15ms
