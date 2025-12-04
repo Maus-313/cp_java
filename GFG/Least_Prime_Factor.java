@@ -9,11 +9,28 @@ public class Least_Prime_Factor {
         }
     }
 
-    public int[] leastPrimeFactor(int n) {}
+    public int[] leastPrimeFactor(int n) {
+        
+    }
 
+    public int[] sol2(int n) {
+        // simple easy
+        int[] arr = new int[n+1];
 
+        for(int i = 0; i<=n; i++){
+            arr[i] = i;
+        }
 
-    
+        for(int i = 2; i*i<=n; i++){
+            if(arr[i] == i){
+                for(int j = i*i; j<=n; j+=i){
+                    if(i< arr[j]) arr[j] = i;
+                }
+            }
+        }
+
+        return arr;
+    }
 
     public int[] sol1(int n) {
         static int MAX = 100000;
