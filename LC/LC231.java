@@ -6,6 +6,10 @@ public class LC231 {
         System.out.println((1 << 31) - 1);
     }
 
+    public boolean isPowerOfTwo(int n) {
+        
+    }
+
     public boolean sol1(int n) {
         // 1ms
         int count = 0;
@@ -21,9 +25,5 @@ public class LC231 {
         return false;
     }
 
-    public boolean isPowerOfTwo(int n) {
-        // 0 ms
-        if(n <= 0) return false;
-        return (((n)&(n-1)) == 0);
-    }
+    
 }
