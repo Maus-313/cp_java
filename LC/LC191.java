@@ -4,11 +4,11 @@ public class LC191 {
     }
 
     public int hammingWeight(int n) {
-        
+
     }
 
     public int sol1(int n) {
-        // 11 -> 1011 
+        // 0ms
         int count = 0;
 
         while(n != 0){
@@ -20,7 +20,7 @@ public class LC191 {
     }
 
     public int sol2(int n) {
-        // best solution
+        // best solution 0ms
         if(n == 1) return 1;
         int count = 0;
 
