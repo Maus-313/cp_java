@@ -4,7 +4,7 @@ public class LC191 {
     }
 
     public int hammingWeight(int n) {
-
+        
     }
 
     public int sol1(int n) {
@@ -32,4 +32,12 @@ public class LC191 {
         return count;
     }
     
+    public int sol3(int n) {
+        int c = 0;
+        while(n != 0){
+            if(n - 1 > 0) c++;
+            n = n & (n-1);
+        }
+        return c;
+    }
 }
