@@ -4,7 +4,6 @@ public class Bit_Manipulation {
     }
 
     static void bitManipulation(int num, int k) {
-        
     }
 
     static void sol1(int num, int k) {

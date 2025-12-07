@@ -1,18 +1,18 @@
 public class LC9 {
     public static void main(String[] args) {
         System.out.println(new LC9().isPalindrome(Integer.MAX_VALUE));
+        System.out.println(new LC9().isPalindrome(12321));
+        System.out.println(new LC9().isPalindrome(1223));
     }
 
 
     public boolean isPalindrome(int x) {
-        if(x<0) return false;
-
         
     }
 
 
     public boolean sol1(int x) {
-        // Not optimised!
+        // 6ms
         String str = Integer.toString(x);
         int l = str.length();
         for(int i = 0; i<l; i++){

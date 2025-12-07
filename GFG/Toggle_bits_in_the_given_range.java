@@ -4,7 +4,9 @@ public class Toggle_bits_in_the_given_range {
         System.out.println();
     }
 
-    static int toggleBits(int n, int l, int r) {}
+    static int toggleBits(int n, int l, int r) {
+        
+    }
 
     static int sol1(int n, int l, int r) {
 
