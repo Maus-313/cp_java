@@ -25,5 +25,9 @@ public class LC231 {
         return false;
     }
 
-    
+    public boolean sol2(int n) {
+        // 0 ms
+        if(n <= 0) return false;
+        return (((n)&(n-1)) == 0);
+    }
 }
