@@ -3,7 +3,7 @@ public class LC29 {
         // System.out.println(new LC29().divide(Integer.MIN_VALUE, 2));
         int a = Integer.MIN_VALUE;
         int b = 2;
-        // System.out.println(new LC29().divide(a, b));
+        System.out.println(new LC29().divide(a, b));
         // System.out.println(a/b);
         // long aa = 1;
         // System.out.println(aa*Math.pow(2, 31));
@@ -15,12 +15,55 @@ public class LC29 {
     }
 
     public int divide(int dividend, int divisor) {
+
+    }
+
+    public int s_1ms_cleaner(int dividend, int divisor) {
+        if(divisor == 1) return dividend;
+        if(dividend == divisor) return 1;
+        if(dividend == 0) return 0;
+
         if(dividend == Integer.MIN_VALUE && divisor == -1) return Integer.MAX_VALUE;
 
         long d = dividend;
         long dd = divisor;
 
-        return help(d, dd);
+        long ans = 0;
+        boolean neg = false;
+
+        if((d < 0 && dd > 0) || (d > 0 && dd < 0)) neg = true;
+        // System.out.println(neg);
+        d = Math.abs(d);
+        dd = Math.abs(dd);
+
+        while(d >= dd){
+            // System.out.println("asd");
+            long temp = dd;
+            long two = 1;
+
+            while(temp <= d){
+                temp <<= 1;
+                two <<= 1;
+                // System.out.println(two);
+            }
+
+            // do{
+            //     temp <<= 1;
+            //     two <<= 1;
+            // }while(temp <= d);
+
+            temp >>= 1;
+            two >>= 1;
+
+            d -= temp;
+            // System.out.println(two);
+            ans += two;
+        }
+
+        // System.out.println(ans);
+
+        if(neg) ans = -1*ans;
+        return (int) ans;
     }
 
     public int s_2s(int dividend, int divisor) {
@@ -64,7 +107,7 @@ public class LC29 {
         return dividend / divisor;
     }
 
-    public int sol2(int d, int dd) {
+    public int s_1ms(int d, int dd) {
         // 1ms
         if (d == Integer.MIN_VALUE && dd == -1)
             return Integer.MAX_VALUE;
