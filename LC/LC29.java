@@ -1,32 +1,89 @@
 public class LC29 {
     public static void main(String[] args) {
-        // System.out.println(new LC29().divide(Integer.MIN_VALUE, 2)); 
+        // System.out.println(new LC29().divide(Integer.MIN_VALUE, 2));
         int a = Integer.MIN_VALUE;
-        int b = 1;
-        System.out.println(new LC29().divide(a, b));
+        int b = 2;
+        // System.out.println(new LC29().divide(a, b));
         // System.out.println(a/b);
         // long aa = 1;
         // System.out.println(aa*Math.pow(2, 31));
         // System.out.println(aa*((long)1<<32));
         // long aa = Math.abs((long)Integer.MIN_VALUE);
         // System.out.println(aa);
+        // long aa = Integer.MIN_VALUE;
+        // System.out.println(Math.abs(aa)/);
     }
 
-    public int divide(int d, int dd) {
+    public int divide(int dividend, int divisor) {
+        if(dividend == Integer.MIN_VALUE && divisor == -1) return Integer.MAX_VALUE;
 
-        if(d == Integer.MIN_VALUE && dd == -1) return Integer.MAX_VALUE;
-        if(d == dd) return 1;
-        if(d == 0) return 0;
+        long d = dividend;
+        long dd = divisor;
+
+        return help(d, dd);
+    }
+
+    public int s_2s(int dividend, int divisor) {
+        if(dividend == Integer.MIN_VALUE && divisor == -1) return Integer.MAX_VALUE;
+
+        long d = dividend;
+        long dd = divisor;
+
+        return help(d, dd);
+    }
+
+    static int help(long d, long dd) {
+        if (d == dd)
+            return 1;
+        if (d == 0)
+            return 0;
+        if (dd == 1)
+            return (int) d;
+
+        if (d < 0 && dd < 0)
+            return help(Math.abs(d), Math.abs(dd));
+        if (d < 0 && dd > 0)
+            return -1 * help(Math.abs(d), dd);
+        if (d > 0 && dd < 0)
+            return -1 * help(d, Math.abs(dd));
+
+        int c = 0;
+
+        while (d >= dd) {
+            c++;
+            d -= dd;
+        }
+
+        return c;
+    }
+
+    public int sol1(int dividend, int divisor) {
+        // 1ms
+        if (dividend == Integer.MIN_VALUE && divisor == -1)
+            return Integer.MAX_VALUE;
+        return dividend / divisor;
+    }
+
+    public int sol2(int d, int dd) {
+        // 1ms
+        if (d == Integer.MIN_VALUE && dd == -1)
+            return Integer.MAX_VALUE;
+        if (d == dd)
+            return 1;
+        if (d == 0)
+            return 0;
 
         long dividend = (long) d;
         long divisor = (long) dd;
         // System.out.println(dividend);
-        
+
         // if(d < dd) return 0;
 
         boolean sign = true;
-        if(d < 0 && dd > 0) sign = false;
-        if(d > 0 && dd < 0) sign = false;
+        if (d < 0 && dd > 0)
+            sign = false;
+        if (d > 0 && dd < 0)
+            sign = false;
 
         dividend = Math.abs(dividend);
         divisor = Math.abs(divisor);
@@ -34,40 +91,31 @@ public class LC29 {
         // System.out.println(dividend);
         // return 0;
         int sum = 0;
-        
-        while( dividend >= divisor ){
+
+        while (dividend >= divisor) {
 
             int temp = 0;
-            while (dividend >= (divisor*((long)1<<temp))) {
+            while (dividend >= (divisor * ((long) 1 << temp))) {
                 // System.out.println(dividend);
                 // break;
                 temp++;
-                if(temp == 31) break;
+                if (temp == 31)
+                    break;
                 // System.out.println(temp);
             }
             temp--;
-            dividend = dividend - (divisor*((long)1<<temp));
+            dividend = dividend - (divisor * ((long) 1 << temp));
             // System.out.println(dividend);
-            sum += 1<<temp;
+            sum += 1 << temp;
         }
 
-        if(sum > Integer.MAX_VALUE){
-            if(!sign){
+        if (sum > Integer.MAX_VALUE) {
+            if (!sign) {
                 return Integer.MIN_VALUE;
-            }else return Integer.MAX_VALUE;
+            } else
+                return Integer.MAX_VALUE;
         }
-        // 
-        return (sum)*((!sign)? -1:1);
-    }
-    
-    public int sol1(int dividend, int divisor) {
-        // 1ms
-        if(dividend == Integer.MIN_VALUE && divisor == -1) return Integer.MAX_VALUE;
-        return dividend/divisor;
-    }
-
-    public int sol2(int dividend, int divisor) {
-        // 0ms
-        
+        //
+        return (sum) * ((!sign) ? -1 : 1);
     }
 }

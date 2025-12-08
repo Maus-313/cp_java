@@ -5,7 +5,7 @@ public class LC1486{
     }
 
     public int xorOperation(int n, int start) {
-        
+
     }
 
     public int s_0ms(int n, int start) {
