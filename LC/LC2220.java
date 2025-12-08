@@ -9,6 +9,28 @@ public class LC2220 {
         
     }
 
+    public int sol2(int start, int goal) {
+        int c = 0;
+
+        while(start != 0 && goal != 0){
+            if((start & 1) != (goal & 1)) c++;
+            start = start >> 1;
+            goal >>= 1;
+        }
+
+        while(start != 0){
+            if((start & 1) == 1) c++;
+            start >>= 1;
+        }
+
+        while(goal != 0){
+            if((goal & 1) == 1) c++;
+            goal >>= 1;
+        }
+
+        return c;
+    }
+
     public int sol1(int start, int goal) {
         // 1    -> 0001
         // 14   -> 1110
