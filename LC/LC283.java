@@ -10,6 +10,31 @@ public class LC283 {
     }
 
     public void moveZeroes(int[] nums) {
+
+    }
+
+    public void sol4(int[] nums) {
+        // 1ms
+        int idx = 0;
+        int l = nums.length;
+        while(idx < l && nums[idx] != 0){
+            idx++;
+        }
+
+        for(int i = idx+1; i<l; i++){
+            if(nums[i] != 0){
+                nums[idx] = nums[i];
+                idx++;
+            }
+        }
+
+        while(idx < l){
+            nums[idx] = 0;
+            idx++;
+        }
+    }
+
+    public void sol1(int[] nums) {
         int zeros = 0;
         int non = 0;
         int l = nums.length;
