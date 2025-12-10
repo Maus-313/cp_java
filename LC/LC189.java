@@ -15,6 +15,29 @@ public class LC189 {
         
     }
 
+    public void sol3(int[] nums, int k) {3,0,1]
+        // best possible sol
+        int n = nums.length;
+        k %= n; 
+        
+        // 1. Reverse the whole array
+        reverse(nums, 0, n - 1);
+        // 2. Reverse the first k elements
+        reverse(nums, 0, k - 1);
+        // 3. Reverse the rest
+        reverse(nums, k, n - 1);
+    }
+
+    private void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
     public void sol1(int[] nums, int k) {
         // 2ms but not space optimised!
         int l = nums.length;
@@ -50,16 +73,6 @@ public class LC189 {
 
         for(int i = 0; i<k; i++){
             nums[i] = temp[i];
-        }
-    }
-
-    public void sol3(int[] nums, int k){
-        // 1ms clean but not space op
-        int[] temp = nums.clone();
-        int l = nums.length;
-        k %= l;
-        for(int i = 0; i<l;i++){
-            nums[i] = temp[(i+(l-k))%l];
         }
     }
 }
