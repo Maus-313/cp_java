@@ -4,13 +4,36 @@ public class LC204 {
 
     public static void main(String[] args) {
         LC204 solution = new LC204();
-        int res = solution.countPrimes(10);
-        System.out.println(res);
+        // System.out.println(solution.countPrimes(12));
+        System.out.println(solution.countPrimes(13));
+        // System.out.println(solution.countPrimes(14));
         // System.out.println(res == 41537);
     }
 
+    
     public int countPrimes(int n) {
         
+    }
+
+    public int sol3(int n) {
+        // 75 ms
+        if(n < 2) return 0;
+        int ans = n-2;
+        // false means prime
+        boolean[] p = new boolean[n+1];
+
+        for(int i = 2; i*i<n; i++){
+            if(!p[i]){
+                for(int j = i*i; j<n; j+=i){
+                    // System.out.println(j);
+                    if(!p[j]){
+                        p[j] = true;
+                        ans--;
+                    }
+                }
+            }
+        }
+        return ans;
     }
 
     public int sol1(int n) {
@@ -36,13 +59,11 @@ public class LC204 {
         return ans.size();
     }
 
-
     public int sol2(int n) {
         // vey optimisede 30ms
 
         static int INF = 5000000;
 
-    // false = prime and vice versa
         static boolean[] prime = new boolean[INF+1];
 
         static int[] prefixSum = new int[INF+1];

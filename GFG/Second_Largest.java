@@ -5,6 +5,10 @@ public class Second_Largest {
     }
 
     public int getSecondLargest(int[] arr) {
+        
+    }
+
+    public int sol1(int[] arr) {
         int f = -1;
         int s = -1;
 
