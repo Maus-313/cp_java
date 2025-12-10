@@ -54,6 +54,12 @@ public class LC189 {
     }
 
     public void sol3(int[] nums, int k){
-
+        // 1ms clean but not space op
+        int[] temp = nums.clone();
+        int l = nums.length;
+        k %= l;
+        for(int i = 0; i<l;i++){
+            nums[i] = temp[(i+(l-k))%l];
+        }
     }
 }
