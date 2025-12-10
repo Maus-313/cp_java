@@ -68,4 +68,19 @@ public class LC26 {
         
         return idx;
     }
+
+    public int sol4(int[] nums) {
+        // 0ms
+        int idx = 0;
+        int l = nums.length;
+
+        for(int i = 1; i<l; i++){
+            if(nums[idx] != nums[i]){
+                idx++;
+                nums[idx] = nums[i];
+            }
+        }
+
+        return idx+1;
+    }
 }
