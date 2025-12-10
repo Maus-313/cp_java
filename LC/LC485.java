@@ -1,27 +1,28 @@
 public class LC485 {
     public static void main(String[] args) {
-        System.out.println(new LC485().findMaxConsecutiveOnes(new int[] {0}));
+        System.out.println(new LC485().findMaxConsecutiveOnes(new int[] {1,1,0,1,1,1}));
+        System.out.println(new LC485().findMaxConsecutiveOnes(new int[] {1,0,1,1,0,1}));
     }
 
     public int findMaxConsecutiveOnes(int[] nums) {
-        int i = 0;
-        int sum = 0;
+
+    }
+
+    public int sol2(int[] nums) {
+        // 1ms
+        int c = 0;
         int max = 0;
         int l = nums.length;
-
-        while(i<l){
-
+        for(int i = 0; i<l; i++){
             if(nums[i] == 0){
-                max = Math.max(max, sum);
-                sum = 0;
+                max = Math.max(max, c);
+                c = 0;
             }else{
-                sum += 1;
+                c++;
             }
-
-            i++;
         }
 
-        max = Math.max(max, sum);
+        max = Math.max(max, c);
 
         return max;
     }
@@ -50,4 +51,6 @@ public class LC485 {
         return max;
 
     }
+
+
 }
