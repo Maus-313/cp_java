@@ -14,18 +14,7 @@ public class LC26 {
     }
 
     public int removeDuplicates(int[] nums) {
-        int last = -101;
-
-        int idx = 0;
-        for(int i : nums){
-            if(last != i){
-                last = i;
-                nums[idx] = i;
-                idx++;
-            }
-        }
         
-        return idx;
     }
 
     public int sol1(int[] nums) {
