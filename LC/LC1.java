@@ -22,6 +22,22 @@ public class LC1 {
     }
 
     public int[] twoSum(int[] arr, int target) {
+        
+    }
+
+    public int[] sol2(int[] arr, int target) {
+        // clean approach
+        int l = arr.length;
+        for(int i = 1; i<l; i++){
+            for(int j = 0; j<l-i; j++){
+                if(arr[j] + arr[j+i] == target) return new int[]{j, j+i};
+            }
+        }
+
+        return new int[]{};
+    }
+
+    public int[] sol1(int[] arr, int target) {
         int[] ans = new int[2];
         int l = arr.length;
         HashMap<Integer, Integer> mem = new HashMap<>();
@@ -38,4 +54,5 @@ public class LC1 {
 
         return ans;
     }
+
 }

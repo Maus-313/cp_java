@@ -1,15 +1,40 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
 public class LC560 {
     public static void main(String[] args) {
-        int[] arr = {1,1,1};
-        int k = 2;
-        System.out.println(new LC560().subarraySum(arr, k));
+        System.out.println(new LC560().subarraySum(new int[]{1,1,1}, 2));
+        System.out.println(new LC560().subarraySum(new int[]{1,2,3}, 3));
     }
 
-    public int subarraySum(int[] arr, int k) {
+    public int subarraySum(int[] nums, int k) {
         
+    }
+
+    public int sol3(int[] nums, int k) {
+        // 25ms sussy approach
+        // ArrayList<Integer> temp = new ArrayList<>();
+        HashMap<Integer, Integer> temp = new HashMap<>();
+        int c = 0;
+        if(nums[0] == k)c++;
+        temp.put(nums[0], 1);
+
+        for(int i = 1; i<nums.length; i++){
+            nums[i] += nums[i-1];
+            if(nums[i] == k) c++;
+            
+            if(temp.containsKey(nums[i] - k)){
+                c += temp.get(nums[i] - k);
+            }
+            
+            if(!temp.containsKey(nums[i])){
+                temp.put(nums[i], 1);
+            }else{
+                temp.put(nums[i], temp.get(nums[i])+1);
+            } 
+        }
+        return c;
     }
 
     public int sol1(int[] arr, int k) {
