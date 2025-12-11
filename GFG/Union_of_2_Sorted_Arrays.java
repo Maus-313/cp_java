@@ -14,6 +14,51 @@ public class Union_of_2_Sorted_Arrays {
     }
 
     public static ArrayList<Integer> findUnion(int a[], int b[]) {
+        
+    }
+
+    public static ArrayList<Integer> sol2(int a[], int b[]) {
+        // ez logic
+        ArrayList<Integer> arr = new ArrayList<>();
+
+        int al = a.length;
+        int bl = b.length;
+        int i = 0, j = 0;
+
+        while(i < al && j < bl){
+            if(a[i] < b[j]){
+                arr.add(a[i]);
+                i++;
+                while(i < al && a[i] == a[i-1]) i++;
+            }else if(a[i] > b[j]){
+                arr.add(b[j]);
+                j++;
+                while(j < bl && b[j] == b[j-1]) j++;
+            }else if(a[i] == b[j]){
+                arr.add(a[i]);
+                i++;
+                j++;
+                while(i < al && a[i] == a[i-1]) i++;
+                while(j < bl && b[j] == b[j-1]) j++;
+            }
+        }
+
+        while (i < al) {
+            arr.add(a[i]);
+            i++;
+            while(i < al && a[i] == a[i-1]) i++;
+        }
+
+        while (j < bl) {
+            arr.add(b[j]);
+            j++;
+            while(j < bl && b[j] == b[j-1]) j++;
+        }
+
+        return arr;
+    }
+
+    public static ArrayList<Integer> sol1(int a[], int b[]) {
         // TLE, 
         ArrayList<Integer> ans = new ArrayList<>();
 
@@ -51,4 +96,5 @@ public class Union_of_2_Sorted_Arrays {
 
         return ans;
     }
+
 }
