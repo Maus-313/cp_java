@@ -9,6 +9,10 @@ public class LC912_B_BubbleSort {
     }
 
     public int[] sortArray(int[] arr) {
+        
+    }    
+
+    public int[] sol1(int[] arr) {
         int l = arr.length;
         for(int j = 0; j<l; j++){
             for (int i = 0; i < l-1; i++) {

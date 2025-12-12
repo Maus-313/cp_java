@@ -9,30 +9,19 @@ public class LC912_C_InsertionSort {
     }
 
     public int[] sortArray(int[] arr) {
-        int l = arr.length; 
-        for(int i = 0; i<l; i++){
+        
+    } 
+
+    public int[] sol1(int[] nums) {
+        int l = arr.length;
+        for(int i = 1; i<l; i++){
             int j = i;
-            while(j>0 && arr[j-1]>arr[j]){
+            while(j > 0 && arr[j] < arr[j-1]){
                 swap(arr, j, j-1);
                 j--;
             }
         }
         return arr;
-    } 
-
-    public int[] sol1(int[] nums) {
-
-        int l = nums.length;
-        for(int i = 0; i<l; i++){
-            int j = i;
-            while(j>0 && nums[j-1]>nums[j]){
-                int temp = nums[j-1];
-                nums[j-1] = nums[j];
-                nums[j] = temp;
-                j--;
-            }
-        }
-        return nums;
     } 
     
     static void swap(int[] arr, int a, int b){

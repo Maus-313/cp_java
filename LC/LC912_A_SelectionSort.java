@@ -9,13 +9,19 @@ public class LC912_A_SelectionSort {
     }
 
     public int[] sortArray(int[] arr) {
+        
+    }
+
+    public int[] sol1(int[] arr) {
         int l = arr.length;
         for(int i = 0; i<l; i++){
+            int minIdx = i;
             for(int j = i+1; j<l; j++){
-                if(arr[i] > arr[j]){
-                    swap(arr, i, j);
+                if(arr[minIdx] > arr[j]){
+                    minIdx = j;
                 }
             }
+            swap(arr, i, minIdx);
         }
         return arr;
     }
